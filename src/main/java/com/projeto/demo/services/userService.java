@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.projeto.demo.entities.Order;
 import com.projeto.demo.entities.User;
 import com.projeto.demo.repositories.UserRepository;
 
@@ -24,8 +25,8 @@ public class userService {
 	}
 	
 	public User findById(Long id) {
-		Optional<User> obj = repository.findById(id);
-		return obj.get();
+	    Optional<User> obj = repository.findById(id);
+	    return obj.orElse(null); // OU use orElseThrow para lançar exceção controlada
 	}
 	
 
