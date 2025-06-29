@@ -29,6 +29,9 @@ public class userService {
 	    return obj.orElse(null); // OU use orElseThrow para lançar exceção controlada
 	}
 	
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
 
 
 }
