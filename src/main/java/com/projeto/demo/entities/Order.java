@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
 import com.projeto.demo.entities.enuns.OrderStatus;
 
@@ -21,6 +22,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+@JsonPropertyOrder({ "quantity", "price", "subtotal", "product" })
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable{
@@ -103,6 +105,14 @@ public class Order implements Serializable{
 
 	public Set<OrderItem> getItems(){
 		return items;
+	}
+	
+	public Double getTotal() {
+		double sum = 0.0;
+		for (OrderItem orderItem : items) {
+			 sum += orderItem.getSubtotal();
+		}
+		return sum;
 	}
 
 	@Override

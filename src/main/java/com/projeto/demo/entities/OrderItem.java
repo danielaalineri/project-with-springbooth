@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.projeto.demo.entities.pk.OrderItemPK;
 
 import jakarta.persistence.EmbeddedId;
@@ -63,6 +64,11 @@ public class OrderItem implements Serializable {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	
+	@JsonProperty("subtotal")
+	public Double getSubtotal() {
+		return price * quantity;
 	}
 
 	@Override
