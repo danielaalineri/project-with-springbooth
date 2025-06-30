@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.projeto.demo.entities.Order;
 import com.projeto.demo.entities.User;
@@ -36,6 +37,24 @@ public class userService {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
+	
+	//função para atualizar um dado usuário
+	public User update(Long id, User obj) {
+		User entity = repository.getReferenceById(id);
+		UpdateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void UpdateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+		
+	}
+	
+
+	
+	
 
 
 }
