@@ -1,73 +1,100 @@
-# Project with SpringBoot
+# Projeto Web Services com Spring Boot e JPA / Hibernate
 
-> 🚧 Projeto em desenvolvimento – API Java com Spring Boot 🚧
+Este projeto é uma API RESTful desenvolvida em Java com Spring Boot, seguindo boas práticas de estruturação e persistência de dados com JPA e Hibernate. Ele simula um sistema de pedidos, com gerenciamento de usuários, produtos, pedidos e categorias.
 
-## 📌 Descrição
-Este projeto é uma aplicação backend utilizando **Java com Spring Boot**, com o objetivo de praticar conceitos fundamentais de desenvolvimento web, como criação de APIs REST, persistência com banco de dados, e boas práticas com Java.
+## 🚀 Tecnologias utilizadas
 
-## 🔧 Tecnologias utilizadas
 - Java 17
 - Spring Boot
-- Spring Web
 - Spring Data JPA
-- Banco de dados H2 (ou outro, conforme configuração)
-- Maven
-- Git
-
-## 🚀 Como executar o projeto
-
-### Pré-requisitos
-- JDK 17 instalado
+- Hibernate
+- H2 Database (ambiente de teste)
+- PostgreSQL (ambiente de produção)
 - Maven
 
-### Rodando localmente
+## 📁 Estrutura do projeto
+
+- `entities/` – Entidades do modelo de domínio: User, Order, Product, Category, OrderItem.
+- `repositories/` – Interfaces que estendem `JpaRepository` para acesso ao banco.
+- `services/` – Camada de serviço com regras de negócio.
+- `resources/` – Controladores REST da aplicação.
+
+## 🔄 Funcionalidades implementadas
+
+- Cadastro e listagem de usuários
+- Criação e consulta de pedidos
+- Associação de produtos a categorias
+- Relacionamento de muitos para muitos entre produtos e categorias
+- Pagamentos vinculados aos pedidos
+- Respostas com códigos HTTP adequados
+- Tratamento de exceções com `@ControllerAdvice`
+
+## 🔧 Como executar localmente
+
+1. Clone o repositório:
+
 ```bash
-# Clone o repositório
 git clone https://github.com/danielaalineri/project-with-springbooth.git
 cd project-with-springbooth
 
-# Execute a aplicação
-./mvnw spring-boot:run
+    Abra no seu IDE (VSCode, IntelliJ, etc.) e execute a aplicação via Spring Boot.
 
-A aplicação estará disponível em:
+    Acesse o H2 Console para visualizar os dados (apenas em perfil test):
 
-http://localhost:8080
+http://localhost:8080/h2-console
 
-✅ Funcionalidades (em andamento)
+    Teste os endpoints usando o Postman, Insomnia ou diretamente via navegador:
 
-Configuração inicial com Spring Boot
+GET http://localhost:8080/users
+GET http://localhost:8080/orders
 
-Endpoints REST
+📄 Exemplos de entidades
+Usuário
 
-Integração com banco de dados
+{
+  "name": "Maria Brown",
+  "email": "maria@gmail.com",
+  "phone": "988888888",
+  "password": "123456"
+}
 
-Testes automatizados
+Pedido
 
-    Documentação da API (Swagger/OpenAPI)
+{
+  "moment": "2025-06-20T19:53:07Z",
+  "status": "PAID",
+  "client": { "id": 1 }
+}
 
-🛠 Em progresso
+📝 Aprendizados
 
-    Adição de entidades e repositórios
+Durante o desenvolvimento deste projeto, foram explorados conceitos como:
 
-    Validação de dados
+    Injeção de dependência com @Autowired
 
-    Tratamento de erros
+    Relacionamentos @OneToMany, @ManyToMany, @EmbeddedId
 
-    Segurança com Spring Security
+    Serialização com Jackson e controle de ciclos com @JsonIgnore
 
-📚 Aprendizados
+    Criação de instâncias iniciais com CommandLineRunner
 
-Este projeto tem como objetivo colocar em prática conhecimentos adquiridos em:
+    Boas práticas em arquitetura RESTful
 
-    Criação de APIs REST com Java
+📌 Requisitos
 
-    Boas práticas com Spring Boot
+    Java 17+
 
-    Versionamento de código com Git
+    Maven
 
-    Modelagem de dados
+    IDE com suporte a Spring Boot
+
+📬 Contato
+
+Desenvolvido por Daniela Alineri
+Se você gostou, dê uma estrela ⭐ e contribua com sugestões!
 
 
 
 
----
+
+
